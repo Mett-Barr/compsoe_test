@@ -58,7 +58,10 @@ fun C01() {
             mutableStateOf(1f)
         }
         val end = Calendar.getInstance().timeInMillis + duration
-        Log.d("!!!", (Calendar.getInstance().timeInMillis + duration).toString() + "  " + Calendar.getInstance().timeInMillis.toString())
+        Log.d(
+            "!!!",
+            (Calendar.getInstance().timeInMillis + duration).toString() + "  " + Calendar.getInstance().timeInMillis.toString()
+        )
         LaunchedEffect(Unit) {
 //            delay(6000)
             withContext(Dispatchers.Default) {
@@ -93,7 +96,10 @@ fun C01() {
 
             Log.d("!!!", ff.toString())
 
-            val rect = Rect(size = Size(size.width*2, size.height*2), offset = Offset(size.width * f.value / 2 + size.width / 4, size.height / -2))
+            val rect = Rect(
+                size = Size(size.width * 2, size.height * 2),
+                offset = Offset(size.width * f.value / 2 + size.width / 4, size.height / -2)
+            )
 //            val rect = Rect(size = size, offset = Offset(size.width * f.value, 0f))
             val path = Path().apply {
 //            moveTo(0f, 0f)
@@ -113,9 +119,19 @@ fun C01() {
 //                brush = Brush.horizontalGradient(listOf(Color(0xFF28D8A3), Color(0xFF00BEB2)))
 //            )
 
+            val gradient = Brush.radialGradient(
+                listOf(Color.White, Color.Transparent),
+                center = Offset(size.width * f.value / 2 + size.width / 4, size.height / -2),
+                radius = size.width * 2
+            )
+
             clipPath(path) {
 //                drawRect(color = Color.White, topLeft = Offset(0f, 0f), size)
-                drawCircle(Color.White, 150.dp.toPx(), Offset(size.width/2, size.height/2))
+                drawCircle(
+                    gradient,
+//                    Color.White,
+                    150.dp.toPx(), Offset(size.width / 2, size.height / 2)
+                )
                 drawText(
                     textM,
                     "text\ntesttestsetsetset",
@@ -125,10 +141,11 @@ fun C01() {
             }
 
 
-            drawPath(
-                path = path,
-                brush = Brush.horizontalGradient(listOf(Color(0xFF28D8A3), Color(0xFF00BEB2)))
-            )
+//            drawPath(
+//                path = path,
+//                brush = Brush.horizontalGradient(listOf(Color(0xFF28D8A3), Color(0xFF00BEB2)))
+//                brush = gradient
+//            )
 
 
         }
